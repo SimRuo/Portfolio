@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "projects": "Projekt",
+    "about": "Om mig",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Hej, jag heter Simon.",
+    "tagline": "Systemvetarstudent och utvecklare. Jag bygger saker med .NET, C#, Python och React — och driftar dem själv.",
+    "location": "Borlänge, Sverige",
+    "role": "Studentmedarbetare på Trafikverket",
+    "cta": "Se mina projekt"
+  },
+  "projects": {
+    "title": "Projekt",
+    "subtitle": "Sidoprojekt jag byggt, släppt och håller igång.",
+    "labels": {
+      "demo": "Livedemo",
+      "source": "Källkod",
+      "private": "Kursprojekt — privat",
+      "bonus": "Bonus"
+    },
+    "items": {
+      "liftlog": {
+        "title": "LiftLog",
+        "tagline": "En träningsapp jag byggde för min egen träning.",
+        "description": "Planera pass, kör sessioner med live-loggning av set, och se utvecklingen i grafer över tid. Installerbar som PWA så att den fungerar på telefonen på gymmet."
+      },
+      "syncio": {
+        "title": "Syncio",
+        "tagline": "Titta på video tillsammans — helt synkat.",
+        "description": "Skapa ett rum, dela en 6-teckenskod, och alla ser samma bildruta samtidigt. Ladda upp egna videor eller hämta från YouTube och 1000+ andra sajter. WebSockets håller play, paus och sökning synkat för alla."
+      },
+      "foodscraper": {
+        "title": "FoodScraper",
+        "tagline": "Skrapa mat- och receptdata, visualisera sedan.",
+        "description": "Hämtar priser och näring från ICA och recept från Tasty, sparar resultatet och kör statistisk analys på det. Diagrammen byggs med Nivo; skrapningen med Selenium och BeautifulSoup."
+      },
+      "mognadstrappan": {
+        "title": "mognadstrappan",
+        "tagline": "Ett uppföljningsverktyg byggt åt Trafikverket som kursprojekt.",
+        "description": "Fullstack-webbapp med React-klient, .NET-server, Python-mikrotjänst och SQLite. Byggd på egen tid som en del av kursarbete vid universitetet — inte som betalt arbete."
+      },
+      "canvas": {
+        "title": "Canvas Assignments (GNOME-tillägg)",
+        "tagline": "Canvas-deadlines i min topp-panel innan jag hinner glömma dem.",
+        "description": "Ett litet GNOME Shell-tillägg som visar kommande inlämningar och notifierar en timme och 30 minuter innan varje deadline. För att jag tröttnade på att missa dem."
+      }
+    }
+  },
+  "about": {
+    "title": "Om mig",
+    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden — där jag lärde mig att jag hellre bygger saker än monterar dem.",
+    "education": {
+      "title": "Utbildning",
+      "degree": "Kandidatexamen, Data- och systemvetenskap",
+      "school": "Högskolan Dalarna",
+      "years": "2023 – 2026"
+    },
+    "certs": {
+      "title": "Certifieringar",
+      "azureAi": "Microsoft Certified: Azure AI Fundamentals",
+      "azureAiDate": "okt 2025",
+      "azureFundamentals": "Microsoft Certified: Azure Fundamentals",
+      "azureFundamentalsDate": "aug 2025"
+    },
+    "stack": {
+      "title": "Stack jag använder",
+      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure"]
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "body": "Öppen för juniora utvecklarroller från sommaren 2026. Lättast att nå mig är via e-post eller LinkedIn.",
+    "labels": {
+      "email": "E-post",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "cv": "Ladda ner CV"
+    }
+  },
+  "footer": {
+    "built": "Byggd med React, MUI, Bootstrap och självhostad med ❤️",
+    "source": "Källkod"
+  },
+  "lang": {
+    "switchTo": "Byt språk",
+    "en": "English",
+    "sv": "Svenska"
+  }
+}

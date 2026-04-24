@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm Simon.",
+    "tagline": "Systems science student and software developer. I build things with .NET, C#, Python, and React — and self-host them.",
+    "location": "Borlänge, Sweden",
+    "role": "Student employee at Trafikverket",
+    "cta": "See my work"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Side projects I've built, shipped, and kept running.",
+    "labels": {
+      "demo": "Live demo",
+      "source": "Source",
+      "private": "Course project — private",
+      "bonus": "Bonus"
+    },
+    "items": {
+      "liftlog": {
+        "title": "LiftLog",
+        "tagline": "A workout tracker I built for my own training.",
+        "description": "Plan routines, run sessions with live set tracking, and watch progress charts fill in over time. Installable as a PWA so it works on my phone at the gym."
+      },
+      "syncio": {
+        "title": "Syncio",
+        "tagline": "Watch videos with friends, in perfect sync.",
+        "description": "Create a room, share a 6-character code, and everyone sees the same frame at the same time. Upload your own videos or pull from YouTube and 1000+ other sites. WebSockets keep play, pause, and seek locked across viewers."
+      },
+      "foodscraper": {
+        "title": "FoodScraper",
+        "tagline": "Scrape grocery and recipe data, then visualize it.",
+        "description": "Pulls prices and nutrition from ICA and recipes from Tasty, stores the results, and runs statistical analysis on top. Charts built with Nivo; scraping built with Selenium and BeautifulSoup."
+      },
+      "mognadstrappan": {
+        "title": "mognadstrappan",
+        "tagline": "A maturity-tracking tool built for Trafikverket as a course project.",
+        "description": "Full-stack web app with a React client, a .NET server, a Python microservice, and SQLite. Built on my own time as part of university coursework — not as paid work."
+      },
+      "canvas": {
+        "title": "Canvas Assignments (GNOME Extension)",
+        "tagline": "Canvas deadlines in my top panel, before I forget them.",
+        "description": "A small GNOME Shell extension that shows upcoming assignments and notifies an hour and 30 minutes before each deadline. Because I got tired of missing them."
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "body": "I'm a systems science student at Dalarna University, graduating spring 2026. I work part-time as a student employee at Trafikverket (Swedish Transport Administration) and spend my off-hours building and self-hosting side projects. My path into software went through five years as a process operator and internal trainer at Senseair, where I led training in soldering and electronics and built a knowledge-test system from scratch — which is where I learned I liked building things more than assembling them.",
+    "education": {
+      "title": "Education",
+      "degree": "Bachelor's Degree, Computer and Information Sciences",
+      "school": "Dalarna University",
+      "years": "2023 – 2026"
+    },
+    "certs": {
+      "title": "Certifications",
+      "azureAi": "Microsoft Certified: Azure AI Fundamentals",
+      "azureAiDate": "Oct 2025",
+      "azureFundamentals": "Microsoft Certified: Azure Fundamentals",
+      "azureFundamentalsDate": "Aug 2025"
+    },
+    "stack": {
+      "title": "Stack I reach for",
+      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure"]
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "body": "Open to junior developer roles starting summer 2026. The best way to reach me is email or LinkedIn.",
+    "labels": {
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "cv": "Download CV"
+    }
+  },
+  "footer": {
+    "built": "Built with React, MUI, Bootstrap, and self-hosted with ❤️",
+    "source": "Source"
+  },
+  "lang": {
+    "switchTo": "Switch language",
+    "en": "English",
+    "sv": "Svenska"
+  }
+}

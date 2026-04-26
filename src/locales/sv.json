@@ -1,12 +1,20 @@
 {
   "nav": {
     "projects": "Projekt",
+    "infrastructure": "Infrastruktur",
     "about": "Om mig",
     "contact": "Kontakt"
   },
+  "infrastructure": {
+    "title": "Infrastruktur",
+    "subtitle": "Hur allt hänger ihop på en enda hemmaserver.",
+    "alt": "Infrastrukturdiagram för simruo.dev",
+    "zoom": "Klicka för att zooma",
+    "body": "Alla projekt på den här sidan körs som Docker-containrar på en ThinkCentre M910q i min lägenhet. En nginx-reverse-proxy terminerar TLS, fördelar trafik per subdomän på ett delat Docker-nätverk, och certbot håller Let's Encrypt-certifikaten färska. Varje projekt är sin egen docker-compose-stack, isolerad men nåbar via samma proxy."
+  },
   "hero": {
-    "greeting": "Hej, jag heter Simon.",
-    "tagline": "Systemvetarstudent och utvecklare. Jag bygger saker med .NET, C#, Python och React — och driftar dem själv.",
+    "greeting": "Simon Ruotsalainen",
+    "tagline": "Systemvetarstudent och utvecklare. Jag bygger saker med .NET, C#, Python och React, och driftar dem själv.",
     "location": "Borlänge, Sverige",
     "role": "Studentmedarbetare på Trafikverket",
     "cta": "Se mina projekt"
@@ -17,40 +25,54 @@
     "labels": {
       "demo": "Livedemo",
       "source": "Källkod",
-      "private": "Kursprojekt — privat",
-      "bonus": "Bonus"
+      "private": "Kursprojekt (privat)",
+      "bonus": "Bonus",
+      "close": "Stäng",
+      "stack": "Stack",
+      "architecture": "Arkitektur"
     },
     "items": {
       "liftlog": {
         "title": "LiftLog",
         "tagline": "En träningsapp jag byggde för min egen träning.",
-        "description": "Planera pass, kör sessioner med live-loggning av set, och se utvecklingen i grafer över tid. Installerbar som PWA så att den fungerar på telefonen på gymmet."
+        "description": "Planera pass, kör sessioner med live-loggning av set, se utvecklingen i grafer över tid, och låt en LLM bygga en plan eller bolla träningsfrågor när du kör fast. Installerbar som PWA så att den fungerar på telefonen på gymmet.",
+        "details": "En React 19-PWA ovanpå ett ASP.NET Core-API med JWT-auth och SQL Server. Pass och set sparas per användare, och graferna hämtar från historiken så att man ser volym och toppset över tid.\n\nAI-integrationen går via Groq (Llama 3.3 70B). Två endpoints: en som genererar en strukturerad träningsplan utifrån användarens input (mål, erfarenhet, antal pass per vecka, tillgänglig utrustning) och sparar den som riktiga plan- och dagrader i SQL Server, och en coachande chatt där användaren kan ställa träningsfrågor och få råd baserat på den egna historiken.\n\nHela stacken körs i Docker och hostas själv bakom nginx. Offlinevänlig caching via service worker gör att jag kan logga set på gymmet även vid dålig täckning.\n\nCI/CD: ett GitHub Actions-flöde körs vid varje push till main. Det SSH:ar in på servern med en nyckel som ligger i GitHub Secrets, drar ner den nya committen, bygger om containrarna med docker compose och tailar loggarna. En push till main är deployen."
       },
       "syncio": {
         "title": "Syncio",
-        "tagline": "Titta på video tillsammans — helt synkat.",
-        "description": "Skapa ett rum, dela en 6-teckenskod, och alla ser samma bildruta samtidigt. Ladda upp egna videor eller hämta från YouTube och 1000+ andra sajter. WebSockets håller play, paus och sökning synkat för alla."
+        "tagline": "Titta på video tillsammans, helt synkat.",
+        "description": "Skapa ett rum, dela en 6-teckenskod, och alla ser samma bildruta samtidigt. Ladda upp egna videor eller hämta från YouTube och 1000+ andra sajter. WebSockets håller play, paus och sökning synkat för alla.",
+        "details": "En .NET 8-backend med SignalR hanterar rumstillstånd och pushar uppspelningshändelser till alla klienter i realtid. Externa videor hämtas med yt-dlp och transkodas vid behov med FFmpeg.\n\nUppladdade och hämtade filer lagras på disk och serveras tillbaka genom samma container. Allt är containeriserat och driftas bakom nginx på samma maskin som övriga projekt.\n\nCI/CD: ett GitHub Actions-flöde körs vid varje push till main. Det SSH:ar in på servern med en nyckel som ligger i GitHub Secrets, drar ner den nya committen, bygger om containrarna med docker compose och tailar loggarna. En push till main är deployen.\n\nDemon är fullversionen, den kräver bara inloggning. Jag vill inte att oautentiserade främlingar drar ner godtyckligt innehåll till min personliga server."
       },
       "foodscraper": {
         "title": "FoodScraper",
         "tagline": "Skrapa mat- och receptdata, visualisera sedan.",
-        "description": "Hämtar priser och näring från ICA och recept från Tasty, sparar resultatet och kör statistisk analys på det. Diagrammen byggs med Nivo; skrapningen med Selenium och BeautifulSoup."
+        "description": "Hämtar näringsdata från ICA och recept från Tasty, sparar resultatet och kör statistisk analys på det. Diagrammen byggs med Nivo; skrapningen med Selenium och BeautifulSoup.",
+        "details": "En FastAPI-backend kör skraporna och exponerar ett rent JSON-API till en React 19-klient. TanStack Query sköter caching och återförsök i frontend; pandas gör tunga lyft i aggregeringar och statistik.\n\nAppen levereras med förskrapad data så att den är användbar direkt. Vill man ha färska siffror kan man dra igång live-skraporna från gränssnittet, och statistiken uppdateras live i takt med att ny data trillar in. Allt är paketerat med Docker och självhostat bakom nginx.\n\nCI/CD: ett GitHub Actions-flöde körs vid varje push till main. Det SSH:ar in på servern med en nyckel som ligger i GitHub Secrets, drar ner den nya committen, bygger om containrarna med docker compose och tailar loggarna. En push till main är deployen."
       },
       "mognadstrappan": {
-        "title": "mognadstrappan",
-        "tagline": "Ett uppföljningsverktyg byggt åt Trafikverket som kursprojekt.",
-        "description": "Fullstack-webbapp med React-klient, .NET-server, Python-mikrotjänst och SQLite. Byggd på egen tid som en del av kursarbete vid universitetet — inte som betalt arbete."
+        "title": "Säkerhetstrappan",
+        "tagline": "Ett säkerhetsuppföljningsverktyg byggt åt Trafikverket som kursprojekt.",
+        "description": "En komplett digitalisering av ett Excelbaserat säkerhetsuppföljningsflöde, med djupgående statistiska visualiseringar och tre nivåer av åtkomstkontroll. React-klient, .NET-server, Python-mikrotjänst och SQL Server. Byggd på egen tid som kursarbete, inte som betalt arbete.",
+        "details": "Ersätter en sårbar Excelrutin med en riktig webbapp. Tre behörighetsnivåer ligger ovanpå varandra: medarbetare fyller i grunddatan, och de två nivåerna ovanför ser successivt mer aggregerade vyer i takt med att omfattningen breddas.\n\nEn Python-mikrotjänst sköter automatiserad import av de gamla Excelarken, tolkar dem och skickar in historisk data i .NET-API:et så att inget från det tidigare arbetsflödet går förlorat. Källkoden hålls privat eftersom domäninnehållet tillhör Trafikverket. Stacken är det som är mitt att visa upp."
       },
       "canvas": {
         "title": "Canvas Assignments (GNOME-tillägg)",
         "tagline": "Canvas-deadlines i min topp-panel innan jag hinner glömma dem.",
-        "description": "Ett litet GNOME Shell-tillägg som visar kommande inlämningar och notifierar en timme och 30 minuter innan varje deadline. För att jag tröttnade på att missa dem."
+        "description": "Ett litet GNOME Shell-tillägg som visar kommande inlämningar och notifierar en timme och 30 minuter innan varje deadline. För att jag tröttnade på att missa dem.",
+        "details": "Pollar Canvas LMS REST-API med en personlig access-token, deduplicerar inlämningar och håller en löpande lista i toppanelen. Notiser skickas exakt en gång per deadline via libnotify.\n\nRen JavaScript med GNOME Shells tilläggs-API:er. Skrivet som ett verktyg åt mig själv och publicerat om någon annan på Dalarnas Canvas-instans vill ha det."
+      },
+      "unity": {
+        "title": "Unity (2D)",
+        "tagline": "Spelutveckling i Unity, mestadels 2D.",
+        "description": "Jag sitter löpande med 2D-spelidéer. Spelutveckling slukar tid, så det finns inget färdigt att demonstrera, men det mest intressanta jag suttit med är väl: pathfinding och procedurellt genererad grafik.",
+        "details": "Pathfindingen bygger på en standard A* men är kraftigt anpassad: separata grids per entitetstyp så att olika typer av enheter föredrar olika vägar och penalty grids ovanpå som styr rörelse (t.ex. undvik öppen mark, föredra vägar, ta omvägar runt flaskhalsar) utan att helt blockera rutor. Det gör att jag kan finjustera beteende genom att ändra vikter istället för att skriva specialgjord AI per enhet.\n\nSprites är jag dålig på att rita, så jag har tränat egna LoRA ovanpå Stable Diffusion för att generera konsekventa 2D-tillgångar i en vald stil. LoRA håller stilen mellan körningar, vilket är det som gör resultatet användbart i ett spel snarare än bara enstaka konceptbilder."
       }
     }
   },
   "about": {
     "title": "Om mig",
-    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden — där jag lärde mig att jag hellre bygger saker än monterar dem.",
+    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden. Där lärde jag mig att jag hellre bygger saker än monterar dem.",
     "education": {
       "title": "Utbildning",
       "degree": "Kandidatexamen, Data- och systemvetenskap",

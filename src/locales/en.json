@@ -1,12 +1,20 @@
 {
   "nav": {
     "projects": "Projects",
+    "infrastructure": "Infrastructure",
     "about": "About",
     "contact": "Contact"
   },
+  "infrastructure": {
+    "title": "Infrastructure",
+    "subtitle": "How everything fits together on a single home server.",
+    "alt": "simruo.dev infrastructure diagram",
+    "zoom": "Click to zoom",
+    "body": "Every project on this page runs as Docker containers on a ThinkCentre M910q in my apartment. An nginx reverse proxy terminates TLS, fans traffic out per subdomain on a shared Docker bridge network, and certbot keeps Let's Encrypt certificates fresh. Each project is its own docker-compose stack, isolated but reachable through the same proxy."
+  },
   "hero": {
-    "greeting": "Hi, I'm Simon.",
-    "tagline": "Systems science student and software developer. I build things with .NET, C#, Python, and React — and self-host them.",
+    "greeting": "Simon Ruotsalainen",
+    "tagline": "Systems science student and software developer. I build things with .NET, C#, Python, and React, and self-host them.",
     "location": "Borlänge, Sweden",
     "role": "Student employee at Trafikverket",
     "cta": "See my work"
@@ -17,40 +25,54 @@
     "labels": {
       "demo": "Live demo",
       "source": "Source",
-      "private": "Course project — private",
-      "bonus": "Bonus"
+      "private": "Course project (private)",
+      "bonus": "Bonus",
+      "close": "Close",
+      "stack": "Stack",
+      "architecture": "Architecture"
     },
     "items": {
       "liftlog": {
         "title": "LiftLog",
         "tagline": "A workout tracker I built for my own training.",
-        "description": "Plan routines, run sessions with live set tracking, and watch progress charts fill in over time. Installable as a PWA so it works on my phone at the gym."
+        "description": "Plan routines, run sessions with live set tracking, watch progress charts fill in over time, and let an LLM build a plan or talk through training questions when you're stuck. Installable as a PWA so it works on my phone at the gym.",
+        "details": "A React 19 PWA on top of an ASP.NET Core API with JWT auth and SQL Server. Sessions and sets are persisted per user, and progress charts pull from history so you can see volume and top sets over time.\n\nAI integration runs through Groq (Llama 3.3 70B). Two endpoints: one generates a structured workout plan from user inputs (goals, experience, days per week, available equipment) and persists it as proper plan/day rows in SQL Server, and one is a coaching chat where users can ask training questions and get advice grounded in their own history.\n\nThe whole stack runs in Docker and is self-hosted behind nginx. Offline-friendly caching via service worker means I can log sets on the gym floor even with patchy signal.\n\nCI/CD: a GitHub Actions workflow runs on every push to main. It SSHes into the server using a key kept in GitHub Secrets, pulls the new commit, rebuilds the containers with docker compose, and tails the logs. Push to main is the deploy."
       },
       "syncio": {
         "title": "Syncio",
         "tagline": "Watch videos with friends, in perfect sync.",
-        "description": "Create a room, share a 6-character code, and everyone sees the same frame at the same time. Upload your own videos or pull from YouTube and 1000+ other sites. WebSockets keep play, pause, and seek locked across viewers."
+        "description": "Create a room, share a 6-character code, and everyone sees the same frame at the same time. Upload your own videos or pull from YouTube and 1000+ other sites. WebSockets keep play, pause, and seek locked across viewers.",
+        "details": "A .NET 8 backend with SignalR handles room state and pushes playback events to all clients in real time. External videos are fetched via yt-dlp and transcoded with FFmpeg when needed.\n\nUploads and fetched files are stored on disk and served back through the same container. Everything is containerized and deployed behind nginx on the same box as the other projects.\n\nCI/CD: a GitHub Actions workflow runs on every push to main. It SSHes into the server using a key kept in GitHub Secrets, pulls the new commit, rebuilds the containers with docker compose, and tails the logs. Push to main is the deploy.\n\nThe demo is the full version, it just requires authentication. I'd rather not let unauthenticated strangers pull arbitrary content onto my personal server."
       },
       "foodscraper": {
         "title": "FoodScraper",
         "tagline": "Scrape grocery and recipe data, then visualize it.",
-        "description": "Pulls prices and nutrition from ICA and recipes from Tasty, stores the results, and runs statistical analysis on top. Charts built with Nivo; scraping built with Selenium and BeautifulSoup."
+        "description": "Pulls nutrition data from ICA and recipes from Tasty, stores the results, and runs statistical analysis on top. Charts built with Nivo; scraping built with Selenium and BeautifulSoup.",
+        "details": "A FastAPI backend orchestrates the scrapers and exposes a clean JSON API to a React 19 client. TanStack Query handles caching and retries on the frontend; pandas does the heavy lifting on aggregations and statistics.\n\nThe app ships with pre-scraped data so it's usable out of the box. If you want fresh numbers, you can fire off the live scrapers from the UI and the statistics update in place as new data lands. Everything is packaged with Docker and self-hosted behind nginx.\n\nCI/CD: a GitHub Actions workflow runs on every push to main. It SSHes into the server using a key kept in GitHub Secrets, pulls the new commit, rebuilds the containers with docker compose, and tails the logs. Push to main is the deploy."
       },
       "mognadstrappan": {
-        "title": "mognadstrappan",
-        "tagline": "A maturity-tracking tool built for Trafikverket as a course project.",
-        "description": "Full-stack web app with a React client, a .NET server, a Python microservice, and SQLite. Built on my own time as part of university coursework — not as paid work."
+        "title": "Säkerhetstrappan",
+        "tagline": "A security-followup tool built for Trafikverket as a course project.",
+        "description": "A full digitalization of an Excel-based security followup workflow, with in-depth statistical visualisations and three-tiered access control. React client, .NET server, Python microservice, SQL Server. Built on my own time as university coursework, not paid work.",
+        "details": "Replaces a brittle Excel routine with a proper web app. Three permission tiers stack on top of each other: team members fill in the raw data, and the two tiers above them see progressively more aggregated views as the scope widens.\n\nA Python microservice handles automated import of the legacy Excel sheets, parsing them and pushing the historical data into the .NET API so nothing from the old workflow gets lost. Source is kept private because the domain content belongs to Trafikverket. The stack is the part that's mine to show."
       },
       "canvas": {
         "title": "Canvas Assignments (GNOME Extension)",
         "tagline": "Canvas deadlines in my top panel, before I forget them.",
-        "description": "A small GNOME Shell extension that shows upcoming assignments and notifies an hour and 30 minutes before each deadline. Because I got tired of missing them."
+        "description": "A small GNOME Shell extension that shows upcoming assignments and notifies an hour and 30 minutes before each deadline. Because I got tired of missing them.",
+        "details": "Polls the Canvas LMS REST API with a personal access token, dedupes assignments, and keeps a running list in the top panel. Notifications fire exactly once per deadline through libnotify.\n\nPure JavaScript using GNOME Shell's extension APIs. Written as a utility for myself and published in case anyone else on Dalarna's Canvas instance wants it."
+      },
+      "unity": {
+        "title": "Unity (2D)",
+        "tagline": "Game-dev experiments in Unity, mostly 2D.",
+        "description": "An ongoing set of 2D game experiments. Game dev eats time, so there's nothing shippable to demo, but the interesting bits are the systems I keep coming back to: pathfinding and procedurally-generated art.",
+        "details": "Pathfinding is built on a stock A*, but heavily customized: separate grids per entity type so a flying unit and a ground unit don't share the same notion of \"walkable\", plus penalty grids layered on top to bias movement (e.g. avoid open ground, prefer roads, route around chokepoints) without hard-blocking tiles. Lets me tune behavior by editing weights instead of writing bespoke AI per unit.\n\nFor sprites, I'm bad at art, so I trained custom LoRAs on top of Stable Diffusion to generate consistent 2D assets in a chosen style. The LoRAs hold the look across runs, which is what makes the output usable in a game rather than just one-off concept art."
       }
     }
   },
   "about": {
     "title": "About",
-    "body": "I'm a systems science student at Dalarna University, graduating spring 2026. I work part-time as a student employee at Trafikverket (Swedish Transport Administration) and spend my off-hours building and self-hosting side projects. My path into software went through five years as a process operator and internal trainer at Senseair, where I led training in soldering and electronics and built a knowledge-test system from scratch — which is where I learned I liked building things more than assembling them.",
+    "body": "I'm a systems science student at Dalarna University, graduating spring 2026. I work part-time as a student employee at Trafikverket (Swedish Transport Administration) and spend my off-hours building and self-hosting side projects. My path into software went through five years as a process operator and internal trainer at Senseair, where I led training in soldering and electronics and built a knowledge-test system from scratch. That's where I learned I liked building things more than assembling them.",
     "education": {
       "title": "Education",
       "degree": "Bachelor's Degree, Computer and Information Sciences",

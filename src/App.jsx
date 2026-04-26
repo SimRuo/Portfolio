@@ -1,6 +1,7 @@
 import Hero from './components/Hero.jsx'
 import NavBar from './components/NavBar.jsx'
 import ProjectsSection from './components/ProjectsSection.jsx'
+import InfrastructureSection from './components/InfrastructureSection.jsx'
 import AboutSection from './components/AboutSection.jsx'
 import ContactSection from './components/ContactSection.jsx'
 import Footer from './components/Footer.jsx'
@@ -12,6 +13,7 @@ export default function App() {
       <main>
         <Hero />
         <ProjectsSection />
+        <InfrastructureSection />
         <AboutSection />
         <ContactSection />
       </main>

@@ -72,7 +72,7 @@
   },
   "about": {
     "title": "About",
-    "body": "I'm a systems science student at Dalarna University, graduating spring 2026. I work part-time as a student employee at Trafikverket (Swedish Transport Administration) and spend my off-hours building and self-hosting side projects. My path into software went through five years as a process operator and internal trainer at Senseair, where I led training in soldering and electronics and built a knowledge-test system from scratch. That's where I learned I liked building things more than assembling them.",
+    "body": "I'm a systems science student at Dalarna University, graduating spring 2026. I work part-time as a student employee at Trafikverket (Swedish Transport Administration) and spend my off-hours building and self-hosting side projects. My path into software went through five years as a process operator and internal trainer at Senseair, where I led training in soldering and electronics and built a knowledge-test system from scratch. I realized industry wasn't where I wanted to spend the rest of my career, and took an open distance course in Python from the University of Helsinki. That's where I learned I'd rather build software than assemble hardware.",
     "education": {
       "title": "Education",
       "degree": "Bachelor's Degree, Computer and Information Sciences",

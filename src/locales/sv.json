@@ -72,7 +72,7 @@
   },
   "about": {
     "title": "Om mig",
-    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden. Där lärde jag mig att jag hellre bygger saker än monterar dem.",
+    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden. Jag insåg att industrin ville jag inte jobba inom resten av livet, och läste en öppen distanskurs i Python på Helsingfors universitet. Då lärde jag mig att jag hellre utvecklar saker än monterar dem.",
     "education": {
       "title": "Utbildning",
       "degree": "Kandidatexamen, Data- och systemvetenskap",

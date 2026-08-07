@@ -14,9 +14,9 @@
   },
   "hero": {
     "greeting": "Simon Ruotsalainen",
-    "tagline": "Systemvetarstudent och utvecklare. Jag bygger saker med .NET, C#, Python och React, och driftar dem själv.",
+    "tagline": "Systemvetare och utvecklare. Jag bygger saker med .NET, C#, Python och React, och driftar dem själv.",
     "location": "Borlänge, Sverige",
-    "role": "Studentmedarbetare på Trafikverket",
+    "role": "Nyutexaminerad systemvetare",
     "cta": "Se mina projekt"
   },
   "projects": {
@@ -72,7 +72,7 @@
   },
   "about": {
     "title": "Om mig",
-    "body": "Jag är systemvetarstudent vid Högskolan Dalarna och tar examen våren 2026. Jag jobbar deltid som studentmedarbetare på Trafikverket och lägger min fritid på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden. Jag insåg att industrin ville jag inte jobba inom resten av livet, och läste en öppen distanskurs i Python på Helsingfors universitet. Då lärde jag mig att jag hellre utvecklar saker än monterar dem.",
+    "body": "Jag är nyutexaminerad systemvetare från Högskolan Dalarna. Sommaren 2026 jobbade jag på Trafikverket med observability – instrumentering och serverövervakning med Grafana och OpenTelemetry. Jag är nu på väg in i en ordinarie utvecklarroll och lägger fortfarande fritiden på att bygga och drifta sidoprojekt. Vägen in i mjukvaruutvecklingen gick via fem år som processoperatör och internutbildare på Senseair, där jag ledde utbildning i lödning och elektronik och byggde ett kunskapstestsystem från grunden. Jag insåg att industrin ville jag inte jobba inom resten av livet, och läste en öppen distanskurs i Python på Helsingfors universitet. Då lärde jag mig att jag hellre utvecklar saker än monterar dem.",
     "education": {
       "title": "Utbildning",
       "degree": "Kandidatexamen, Data- och systemvetenskap",
@@ -88,12 +88,12 @@
     },
     "stack": {
       "title": "Stack jag använder",
-      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure"]
+      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure", "Grafana", "OpenTelemetry"]
     }
   },
   "contact": {
     "title": "Kontakt",
-    "body": "Öppen för juniora utvecklarroller från sommaren 2026. Lättast att nå mig är via e-post eller LinkedIn.",
+    "body": "Nyexaminerad och på väg in i en ordinarie utvecklarroll. Lättast att nå mig är via e-post eller LinkedIn.",
     "labels": {
       "email": "E-post",
       "linkedin": "LinkedIn",

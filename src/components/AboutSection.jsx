@@ -12,11 +12,11 @@ import Section from './Section.jsx'
 
 function InfoCard({ icon, title, children }) {
   return (
-    <Card sx={{ height: '100%' }}>
+    <Card sx={{ height: '100%', transition: 'background-color 150ms', '&:hover': { backgroundColor: '#16161b' } }}>
       <CardContent>
-        <Stack direction="row" spacing={1.5} alignItems="center" sx={{ mb: 2 }}>
+        <Stack direction="row" spacing={1.25} alignItems="center" sx={{ mb: 2, pb: 1.5, borderBottom: '1px solid', borderColor: 'divider' }}>
           {icon}
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+          <Typography component="span" className="mono" sx={{ color: 'text.primary' }}>
             {title}
           </Typography>
         </Stack>
@@ -97,9 +97,10 @@ export default function AboutSection() {
                   label={item}
                   size="small"
                   sx={{
-                    backgroundColor: 'rgba(124,154,255,0.1)',
+                    backgroundColor: 'transparent',
+                    border: '1px solid',
+                    borderColor: 'primary.main',
                     color: 'primary.main',
-                    fontWeight: 500,
                   }}
                 />
               ))}

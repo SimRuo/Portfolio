@@ -28,10 +28,10 @@ function Hero({ project, copy }) {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'primary.main',
-          backgroundColor: '#0b0d12',
+          backgroundColor: '#0b0b0e',
           backgroundImage:
-            'radial-gradient(ellipse at center, rgba(124,154,255,0.14), transparent 65%)',
-          borderRadius: 2,
+            'radial-gradient(ellipse at center, rgba(255,77,23,0.14), transparent 65%)',
+          borderRadius: 0,
         }}
       >
         <ArticleOutlinedIcon sx={{ fontSize: 96 }} />
@@ -50,7 +50,7 @@ function Hero({ project, copy }) {
           color: 'text.secondary',
           background:
             'repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 18px, rgba(255,255,255,0.045) 18px 36px)',
-          borderRadius: 2,
+          borderRadius: 0,
         }}
       >
         <LockOutlinedIcon fontSize="large" />
@@ -66,11 +66,11 @@ function Hero({ project, copy }) {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'primary.main',
-          backgroundColor: '#0b0d12',
+          backgroundColor: '#0b0b0e',
           backgroundImage:
-            'radial-gradient(ellipse at center, rgba(124,154,255,0.14), transparent 65%), linear-gradient(transparent 95%, rgba(124,154,255,0.18) 95%), linear-gradient(90deg, transparent 95%, rgba(124,154,255,0.18) 95%)',
+            'radial-gradient(ellipse at center, rgba(255,77,23,0.14), transparent 65%), linear-gradient(transparent 95%, rgba(255,77,23,0.18) 95%), linear-gradient(90deg, transparent 95%, rgba(255,77,23,0.18) 95%)',
           backgroundSize: 'auto, 32px 32px, 32px 32px',
-          borderRadius: 2,
+          borderRadius: 0,
         }}
       >
         <SportsEsportsOutlinedIcon sx={{ fontSize: 96 }} />
@@ -83,8 +83,8 @@ function Hero({ project, copy }) {
     width: '100%',
     aspectRatio: portrait ? '4 / 3' : '16 / 9',
     overflow: 'hidden',
-    backgroundColor: '#0b0d12',
-    borderRadius: 2,
+    backgroundColor: '#0b0b0e',
+    borderRadius: 0,
   }
 
   if (portrait && image) {
@@ -163,8 +163,8 @@ export default function ProjectModal({ project, open, onClose }) {
       scroll="body"
       PaperProps={{ sx: { backgroundImage: 'none' } }}
     >
-      <DialogTitle sx={{ pr: 6 }}>
-        <Typography variant="h4" component="div" sx={{ fontWeight: 600 }}>
+      <DialogTitle sx={{ pr: 6, borderBottom: '1px solid', borderColor: 'divider' }}>
+        <Typography variant="h4" component="div" sx={{ fontWeight: 800, textTransform: 'none', fontSize: '1.6rem', letterSpacing: '-0.01em' }}>
           {copy.title}
         </Typography>
         <Typography
@@ -176,7 +176,7 @@ export default function ProjectModal({ project, open, onClose }) {
         <IconButton
           onClick={onClose}
           aria-label={labels.close || 'Close'}
-          sx={{ position: 'absolute', right: 12, top: 12, color: 'text.secondary' }}
+          sx={{ position: 'absolute', right: 12, top: 12, color: 'text.secondary', borderRadius: 0 }}
         >
           <CloseIcon />
         </IconButton>
@@ -196,7 +196,7 @@ export default function ProjectModal({ project, open, onClose }) {
         )}
 
         <Box>
-          <Typography variant="overline" sx={{ color: 'text.secondary', letterSpacing: '0.08em' }}>
+          <Typography variant="overline" sx={{ color: 'primary.main' }}>
             {labels.stack || 'Stack'}
           </Typography>
           <Stack direction="row" spacing={0.75} sx={{ flexWrap: 'wrap', rowGap: 0.75, mt: 1 }}>
@@ -216,7 +216,7 @@ export default function ProjectModal({ project, open, onClose }) {
           <>
             <Divider flexItem />
             <Box>
-              <Typography variant="overline" sx={{ color: 'text.secondary', letterSpacing: '0.08em' }}>
+              <Typography variant="overline" sx={{ color: 'secondary.main' }}>
                 {labels.architecture || 'Architecture'}
               </Typography>
               <Box
@@ -228,10 +228,10 @@ export default function ProjectModal({ project, open, onClose }) {
                   display: 'block',
                   width: '100%',
                   mt: 1,
-                  borderRadius: 2,
+                  borderRadius: 0,
                   border: '1px solid',
                   borderColor: 'divider',
-                  backgroundColor: '#0b0d12',
+                  backgroundColor: '#0b0b0e',
                 }}
               />
             </Box>

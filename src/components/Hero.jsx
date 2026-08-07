@@ -2,41 +2,29 @@ import { useTranslation } from 'react-i18next'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import PlaceIcon from '@mui/icons-material/Place'
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 
 export default function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section id="top" className="section">
+    <section id="top" className="section" style={{ paddingTop: '4rem', borderBottom: '1px solid #26262e' }}>
       <div className="container-xl">
-        <div className="row align-items-center g-4 g-lg-5">
+        <div className="row align-items-end g-4 g-lg-5">
           <div className="col-12 col-lg-8 order-2 order-lg-1">
-            <Stack direction="row" spacing={1} sx={{ mb: 3, flexWrap: 'wrap', rowGap: 1 }}>
-              <Chip
-                icon={<PlaceIcon />}
-                label={t('hero.location')}
-                variant="outlined"
-                size="small"
-              />
-              <Chip
-                icon={<WorkOutlineIcon />}
-                label={t('hero.role')}
-                variant="outlined"
-                size="small"
-              />
+            <Stack direction="row" spacing={2.5} className="mono" sx={{ mb: 3, color: 'secondary.main', flexWrap: 'wrap', rowGap: 0.75 }}>
+              <span>{t('hero.location')}</span>
+              <Box component="span" sx={{ color: 'divider' }}>/</Box>
+              <span>{t('hero.role')}</span>
             </Stack>
             <Typography
               variant="h1"
               sx={{
-                fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4.5rem' },
-                lineHeight: 1.05,
+                fontSize: { xs: '2.4rem', sm: '3.3rem', md: 'clamp(2.6rem, 5.5vw, 4.6rem)' },
                 mb: 3,
+                maxWidth: '18ch',
               }}
             >
               {t('hero.greeting')}
@@ -49,7 +37,8 @@ export default function Hero() {
                 maxWidth: '42rem',
                 mb: 4,
                 fontWeight: 400,
-                lineHeight: 1.5,
+                lineHeight: 1.6,
+                fontSize: { xs: '1rem', sm: '1.15rem' },
               }}
             >
               {t('hero.tagline')}
@@ -69,28 +58,18 @@ export default function Hero() {
             <Box
               sx={{
                 position: 'relative',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: -8,
-                  borderRadius: '50%',
-                  background:
-                    'radial-gradient(circle at 30% 20%, rgba(124,154,255,0.35), rgba(124,154,255,0) 70%)',
-                  filter: 'blur(18px)',
-                  zIndex: 0,
-                },
+                border: '1px solid',
+                borderColor: 'divider',
+                p: '6px',
               }}
             >
               <Avatar
                 src="/me.jpeg"
                 alt="Simon Ruotsalainen"
+                variant="square"
                 sx={{
-                  position: 'relative',
-                  zIndex: 1,
-                  width: { xs: 160, sm: 200, lg: 260 },
-                  height: { xs: 160, sm: 200, lg: 260 },
-                  border: '2px solid rgba(124,154,255,0.35)',
-                  boxShadow: '0 20px 60px -20px rgba(0,0,0,0.8)',
+                  width: { xs: 150, sm: 190, lg: 240 },
+                  height: { xs: 150, sm: 190, lg: 240 },
                 }}
               />
             </Box>

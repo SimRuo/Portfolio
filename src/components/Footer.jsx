@@ -8,21 +8,21 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '2px solid #f4f4f0',
         marginTop: '3rem',
-        paddingTop: '2rem',
-        paddingBottom: '2rem',
+        paddingTop: '1.5rem',
+        paddingBottom: '1.5rem',
       }}
     >
       <div className="container-xl">
         <div className="row align-items-center g-3">
           <div className="col-12 col-md-auto">
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              © {year} Simon Ruotsalainen
+            <Typography component="span" className="mono" sx={{ color: 'text.secondary' }}>
+              © {year} SIMON RUOTSALAINEN
             </Typography>
           </div>
           <div className="col-12 col-md text-md-end">
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography component="span" className="mono" sx={{ color: 'text.secondary' }}>
               {t('footer.built')}
             </Typography>
           </div>

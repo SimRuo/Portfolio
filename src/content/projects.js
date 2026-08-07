@@ -59,6 +59,12 @@ const projects = [
     variant: 'sandbox',
     stack: ['Unity', 'C#', 'A* pathfinding', 'Stable Diffusion', 'LoRA training'],
   },
+  {
+    id: 'thesis',
+    variant: 'paper',
+    stack: ['Grafana', 'OpenTelemetry', 'Model Context Protocol', 'MCP', 'NASA-TLX', 'nginx'],
+    paperUrl: 'https://du.diva-portal.org/smash/get/diva2:2082607/FULLTEXT01.pdf',
+  },
 ]
 
 export default projects

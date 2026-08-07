@@ -15,9 +15,29 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined'
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
 
 function Hero({ project, copy }) {
   const { image, video, portrait, variant } = project
+  if (variant === 'paper') {
+    return (
+      <Box
+        sx={{
+          aspectRatio: '16 / 9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'primary.main',
+          backgroundColor: '#0b0d12',
+          backgroundImage:
+            'radial-gradient(ellipse at center, rgba(124,154,255,0.14), transparent 65%)',
+          borderRadius: 2,
+        }}
+      >
+        <ArticleOutlinedIcon sx={{ fontSize: 96 }} />
+      </Box>
+    )
+  }
   if (variant === 'private') {
     return (
       <Box
@@ -129,7 +149,7 @@ export default function ProjectModal({ project, open, onClose }) {
 
   if (!project) return null
 
-  const { id, stack, liveUrl, sourceUrl, diagram, variant } = project
+  const { id, stack, liveUrl, sourceUrl, paperUrl, diagram, variant } = project
   const copy = t(`projects.items.${id}`, { returnObjects: true })
   const labels = t('projects.labels', { returnObjects: true })
   const hasDetails = typeof copy.details === 'string' && copy.details.length > 0
@@ -218,7 +238,7 @@ export default function ProjectModal({ project, open, onClose }) {
           </>
         )}
 
-        {variant !== 'private' && variant !== 'sandbox' && (liveUrl || sourceUrl) && (
+        {variant !== 'private' && variant !== 'sandbox' && (liveUrl || sourceUrl || paperUrl) && (
           <Stack direction="row" spacing={1} sx={{ pt: 1 }}>
             {liveUrl && (
               <Button
@@ -240,6 +260,17 @@ export default function ProjectModal({ project, open, onClose }) {
                 startIcon={<GitHubIcon />}
               >
                 {labels.source}
+              </Button>
+            )}
+            {paperUrl && (
+              <Button
+                variant="contained"
+                href={paperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                endIcon={<LaunchIcon />}
+              >
+                {labels.paper}
               </Button>
             )}
           </Stack>

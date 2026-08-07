@@ -29,7 +29,8 @@
       "bonus": "Bonus",
       "close": "Close",
       "stack": "Stack",
-      "architecture": "Architecture"
+      "architecture": "Architecture",
+      "paper": "Read the thesis (PDF)"
     },
     "items": {
       "liftlog": {
@@ -67,6 +68,12 @@
         "tagline": "Game-dev experiments in Unity, mostly 2D.",
         "description": "An ongoing set of 2D game experiments. Game dev eats time, so there's nothing shippable to demo, but the interesting bits are the systems I keep coming back to: pathfinding and procedurally-generated art.",
         "details": "Pathfinding is built on a stock A*, but heavily customized: separate grids per entity type so a flying unit and a ground unit don't share the same notion of \"walkable\", plus penalty grids layered on top to bias movement (e.g. avoid open ground, prefer roads, route around chokepoints) without hard-blocking tiles. Lets me tune behavior by editing weights instead of writing bespoke AI per unit.\n\nFor sprites, I'm bad at art, so I trained custom LoRAs on top of Stable Diffusion to generate consistent 2D assets in a chosen style. The LoRAs hold the look across runs, which is what makes the output usable in a game rather than just one-off concept art."
+      },
+      "thesis": {
+        "title": "Interface Modality and Cognitive Load in Incident Response",
+        "tagline": "Bachelor's thesis on MCP-assisted incident response in Grafana — highest possible grade.",
+        "description": "A controlled experiment comparing traditional dashboard navigation in Grafana against an MCP-based AI-assisted alternative, measuring the effect on cognitive load and diagnostic performance during incident response. Twelve participants from Trafikverket IKT solved incident scenarios under both interfaces; the MCP mode produced lower perceived workload, shorter time to root cause, and higher task success.",
+        "details": "Co-written with Anton Wiberg as a bachelor's thesis in Informatics at Dalarna University, supervised by Robert Pilstål and examined by Kenneth Carling (2026-05-27). The thesis was awarded the highest possible grade.\n\nThe study was a within-subjects experiment in counterbalanced order: the same twelve participants solved two synthetic incidents (a recommendation-service cache failure and a payment failure) in the OpenTelemetry Demo environment, once with traditional Grafana dashboard navigation and once with an MCP server that let an AI assistant query and correlate telemetry data on their behalf. Cognitive load was measured with NASA-TLX, performance with Time to Root Cause and Task Success.\n\nResults: the MCP mode produced markedly lower cognitive load (Raw TLX 31.2 vs. 49.9), nearly halved time to root cause (9.97 vs. 16.69 minutes), and double the task success rate (100% vs. 50%). Strong correlations between load and time supported the Cognitive Load Theory prediction that working-memory capacity is a bottleneck in diagnostic work.\n\nI built and hosted the entire technical setup behind the experiment myself, on my own server — the test environment, the Grafana instance, the MCP server, and the nginx routing tying them together."
       }
     }
   },

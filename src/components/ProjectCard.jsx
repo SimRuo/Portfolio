@@ -12,6 +12,7 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined'
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
 
 function StackChips({ items }) {
   return (
@@ -73,6 +74,34 @@ function SandboxPlaceholder({ label }) {
       }}
     >
       <SportsEsportsOutlinedIcon sx={{ fontSize: 56 }} />
+      <Typography
+        variant="body2"
+        sx={{ fontWeight: 500, letterSpacing: '0.02em', color: 'text.secondary' }}
+      >
+        {label}
+      </Typography>
+    </Box>
+  )
+}
+
+function PaperPlaceholder({ label }) {
+  return (
+    <Box
+      sx={{
+        aspectRatio: '16 / 9',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: 1,
+        backgroundColor: '#0b0d12',
+        backgroundImage:
+          'radial-gradient(ellipse at center, rgba(124,154,255,0.12), transparent 65%)',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        color: 'primary.main',
+      }}
+    >
+      <ArticleOutlinedIcon sx={{ fontSize: 56 }} />
       <Typography
         variant="body2"
         sx={{ fontWeight: 500, letterSpacing: '0.02em', color: 'text.secondary' }}
@@ -169,13 +198,14 @@ function Media({ image, video, alt, portrait }) {
 
 export default function ProjectCard({ project, onOpen }) {
   const { t } = useTranslation()
-  const { id, variant, image, video, portrait, stack, liveUrl, sourceUrl } = project
+  const { id, variant, image, video, portrait, stack, liveUrl, sourceUrl, paperUrl } = project
   const copy = t(`projects.items.${id}`, { returnObjects: true })
   const labels = t('projects.labels', { returnObjects: true })
 
   const isPrivate = variant === 'private'
   const isSandbox = variant === 'sandbox'
-  const hasActions = !isPrivate && !isSandbox && (liveUrl || sourceUrl)
+  const isPaper = variant === 'paper'
+  const hasActions = !isPrivate && !isSandbox && (liveUrl || sourceUrl || paperUrl)
 
   return (
     <Card
@@ -198,6 +228,8 @@ export default function ProjectCard({ project, onOpen }) {
           <PrivatePlaceholder label={labels.private} />
         ) : isSandbox ? (
           <SandboxPlaceholder label={labels.sandbox} />
+        ) : isPaper ? (
+          <PaperPlaceholder label={labels.paper} />
         ) : (
           <Media image={image} video={video} alt={copy.title} portrait={portrait} />
         )}
@@ -257,6 +289,19 @@ export default function ProjectCard({ project, onOpen }) {
               onClick={(e) => e.stopPropagation()}
             >
               {labels.source}
+            </Button>
+          )}
+          {paperUrl && (
+            <Button
+              variant="contained"
+              size="small"
+              href={paperUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              endIcon={<LaunchIcon />}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {labels.paper}
             </Button>
           )}
         </CardActions>

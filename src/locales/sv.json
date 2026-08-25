@@ -25,8 +25,9 @@
     "labels": {
       "demo": "Livedemo",
       "source": "Källkod",
-      "private": "Kursprojekt (privat)",
-      "bonus": "Bonus",
+      "private": "Kursprojekt",
+      "project": "Projekt",
+      "technology": "Teknik",
       "close": "Stäng",
       "stack": "Stack",
       "architecture": "Arkitektur",
@@ -95,7 +96,16 @@
     },
     "stack": {
       "title": "Stack jag använder",
-      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure", "Grafana", "OpenTelemetry"]
+      "items": [
+        ".NET / C#",
+        "Python",
+        "React",
+        "Docker",
+        "nginx",
+        "Azure",
+        "Grafana",
+        "OpenTelemetry"
+      ]
     }
   },
   "contact": {

@@ -135,7 +135,7 @@ export default function ProjectCard({ project, index, onOpen }) {
   const isPaper = variant === "paper";
   const hasActions = !isPrivate && !isSandbox && (liveUrl || sourceUrl || paperUrl);
 
-  const tag = isPrivate ? labels.private : isSandbox ? "sandbox" : isPaper ? "paper" : variant;
+  const tag = isPrivate ? labels.private : isSandbox ? labels.technology : isPaper ? "paper" : labels.project;
 
   return (
     <Box
@@ -182,7 +182,7 @@ export default function ProjectCard({ project, index, onOpen }) {
         {isPrivate ? (
           <IconPlaceholder Icon={LockOutlinedIcon} label={labels.private} />
         ) : isSandbox ? (
-          <IconPlaceholder Icon={SportsEsportsOutlinedIcon} label="sandbox" />
+          <IconPlaceholder Icon={SportsEsportsOutlinedIcon} label={labels.technology} />
         ) : isPaper ? (
           <IconPlaceholder Icon={ArticleOutlinedIcon} label="paper" />
         ) : (

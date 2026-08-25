@@ -25,8 +25,9 @@
     "labels": {
       "demo": "Live demo",
       "source": "Source",
-      "private": "Course project (private)",
-      "bonus": "Bonus",
+      "private": "Course project",
+      "project": "Project",
+      "technology": "Technology",
       "close": "Close",
       "stack": "Stack",
       "architecture": "Architecture",
@@ -95,7 +96,16 @@
     },
     "stack": {
       "title": "Stack I reach for",
-      "items": [".NET / C#", "Python", "React", "Docker", "nginx", "Azure", "Grafana", "OpenTelemetry"]
+      "items": [
+        ".NET / C#",
+        "Python",
+        "React",
+        "Docker",
+        "nginx",
+        "Azure",
+        "Grafana",
+        "OpenTelemetry"
+      ]
     }
   },
   "contact": {

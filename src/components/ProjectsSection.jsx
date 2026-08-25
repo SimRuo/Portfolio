@@ -15,16 +15,13 @@ export default function ProjectsSection() {
   return (
     <Section id="projects" title={t('projects.title')} subtitle={t('projects.subtitle')}>
       <Box
-        className="hatch-bg"
         sx={{
           display: 'grid',
-          gap: '1px',
-          border: '1px solid',
-          borderColor: 'divider',
-          backgroundColor: 'background.default',
+          gap: 3,
           gridTemplateColumns: {
-            xs: 'repeat(auto-fill, minmax(260px, 1fr))',
-            sm: 'repeat(auto-fill, minmax(320px, 1fr))',
+            xs: '1fr',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)',
           },
         }}
       >

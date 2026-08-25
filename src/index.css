@@ -53,6 +53,78 @@ img {
   );
 }
 
+/* Card hover: the whole card lightens, the image eases up 3%, and the
+   darkened-grayscale scrim (see Tint.jsx) dissolves off in a scatter of
+   squares rather than a fade. All three run on the same ~300ms budget (the
+   card's own background-color transition is set alongside it in
+   ProjectCard.jsx) so the card reads as one motion rather than three
+   separate ones.
+
+   The scrim is one continuous backdrop-filter covering the whole shot —
+   not 84 separately filtered cells. Filters compound where they overlap
+   (two stacked grayscale+brightness passes darken their overlap further
+   than either alone), so tiling 84 of them edge-to-edge always risks a
+   seam: too little overlap leaves a hairline of the raw photo showing at
+   a grid-rounding gap, too much turns that same strip into a visible dark
+   line instead. Because there's only one filtered instance here, neither
+   failure mode is reachable. The square reveal is carved out of it
+   afterwards with an SVG alpha mask (see Tint.jsx's <mask>), which is a
+   boolean union — overlapping its cells to hide rounding gaps is always
+   safe, unlike overlapping the filter itself.
+
+   Restricted to devices that report real hover + a fine pointer: on touch,
+   :hover sticks after a tap instead of releasing, which would leave a card
+   half-scrimmed and zoomed until the next tap elsewhere. Touch just gets
+   the media at full brightness with no scrim and no interaction to get
+   stuck in. */
+.shot {
+  isolation: isolate;
+}
+
+.tint {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .shot img,
+  .shot video {
+    transition: transform 300ms cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .card:hover .shot img,
+  .card:hover .shot video {
+    transform: scale(1.03);
+  }
+
+  .tint {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    -webkit-backdrop-filter: grayscale(1) brightness(0.55);
+    backdrop-filter: grayscale(1) brightness(0.55);
+  }
+
+  .tint-cell {
+    fill: #fff;
+    fill-opacity: 1;
+    transition: fill-opacity 0.001s steps(1, end);
+    transition-delay: var(--out, 0ms);
+  }
+
+  .card:hover .tint-cell {
+    fill-opacity: 0;
+    transition-delay: var(--in, 0ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tint-cell {
+    transition-delay: 0ms !important;
+  }
+}
+
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }

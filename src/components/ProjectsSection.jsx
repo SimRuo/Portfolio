@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Box from '@mui/material/Box'
 
 import Section from './Section.jsx'
 import ProjectCard from './ProjectCard.jsx'
@@ -13,13 +14,26 @@ export default function ProjectsSection() {
 
   return (
     <Section id="projects" title={t('projects.title')} subtitle={t('projects.subtitle')}>
-      <div className="row g-4">
-        {projects.map((project) => (
-          <div key={project.id} className="col-12 col-md-6 col-lg-4">
-            <ProjectCard project={project} onOpen={() => setActiveId(project.id)} />
-          </div>
+      <Box
+        sx={{
+          display: 'grid',
+          gap: 3,
+          gridTemplateColumns: {
+            xs: '1fr',
+            md: 'repeat(2, 1fr)',
+            lg: 'repeat(3, 1fr)',
+          },
+        }}
+      >
+        {projects.map((project, i) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={i + 1}
+            onOpen={() => setActiveId(project.id)}
+          />
         ))}
-      </div>
+      </Box>
 
       <ProjectModal project={active} open={Boolean(active)} onClose={() => setActiveId(null)} />
     </Section>

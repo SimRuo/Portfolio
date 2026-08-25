@@ -1,140 +1,76 @@
-import { useTranslation } from 'react-i18next'
-import Card from '@mui/material/Card'
-import CardActionArea from '@mui/material/CardActionArea'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
-import Chip from '@mui/material/Chip'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import LaunchIcon from '@mui/icons-material/Launch'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined'
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
+import { useTranslation } from "react-i18next";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import LaunchIcon from "@mui/icons-material/Launch";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+
+import Tint from "./Tint.jsx";
 
 function StackChips({ items }) {
   return (
-    <Stack direction="row" spacing={0.75} sx={{ flexWrap: 'wrap', rowGap: 0.75, mb: 2 }}>
+    <Stack direction="row" spacing={0.75} sx={{ flexWrap: "wrap", rowGap: 0.75, mb: 0.5 }}>
       {items.map((item) => (
-        <Chip
-          key={item}
-          label={item}
-          size="small"
-          variant="outlined"
-          sx={{ borderColor: 'divider', color: 'text.secondary' }}
-        />
+        <Chip key={item} label={item} size="small" variant="outlined" sx={{ borderColor: "divider", color: "text.secondary" }} />
       ))}
     </Stack>
-  )
+  );
 }
 
-function PrivatePlaceholder({ label }) {
+function IconPlaceholder({ Icon, label }) {
   return (
     <Box
       sx={{
-        aspectRatio: '16 / 9',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
+        aspectRatio: "16 / 9",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
         gap: 1,
-        background:
-          'repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 18px, rgba(255,255,255,0.045) 18px 36px)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        color: 'text.secondary',
+        backgroundColor: "#0b0b0e",
+        backgroundImage: "radial-gradient(ellipse at center, rgba(255,77,23,0.1), transparent 65%)",
+        borderBottom: "1px solid",
+        borderColor: "divider",
+        color: "primary.main",
       }}
     >
-      <LockOutlinedIcon fontSize="large" />
-      <Typography variant="body2" sx={{ fontWeight: 500, letterSpacing: '0.02em' }}>
+      <Icon sx={{ fontSize: 52 }} />
+      <Typography component="span" className="mono" sx={{ color: "text.secondary" }}>
         {label}
       </Typography>
     </Box>
-  )
+  );
 }
 
-function SandboxPlaceholder({ label }) {
-  return (
-    <Box
-      sx={{
-        aspectRatio: '16 / 9',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        gap: 1.25,
-        position: 'relative',
-        backgroundColor: '#0b0d12',
-        backgroundImage:
-          'radial-gradient(ellipse at center, rgba(124,154,255,0.12), transparent 65%), linear-gradient(transparent 95%, rgba(124,154,255,0.18) 95%), linear-gradient(90deg, transparent 95%, rgba(124,154,255,0.18) 95%)',
-        backgroundSize: 'auto, 28px 28px, 28px 28px',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        color: 'primary.main',
-      }}
-    >
-      <SportsEsportsOutlinedIcon sx={{ fontSize: 56 }} />
-      <Typography
-        variant="body2"
-        sx={{ fontWeight: 500, letterSpacing: '0.02em', color: 'text.secondary' }}
-      >
-        {label}
-      </Typography>
-    </Box>
-  )
-}
-
-function PaperPlaceholder({ label }) {
-  return (
-    <Box
-      sx={{
-        aspectRatio: '16 / 9',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        gap: 1,
-        backgroundColor: '#0b0d12',
-        backgroundImage:
-          'radial-gradient(ellipse at center, rgba(124,154,255,0.12), transparent 65%)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-        color: 'primary.main',
-      }}
-    >
-      <ArticleOutlinedIcon sx={{ fontSize: 56 }} />
-      <Typography
-        variant="body2"
-        sx={{ fontWeight: 500, letterSpacing: '0.02em', color: 'text.secondary' }}
-      >
-        {label}
-      </Typography>
-    </Box>
-  )
-}
-
-function Media({ image, video, alt, portrait }) {
+function Media({ image, video, alt, portrait, seed }) {
   const container = {
-    position: 'relative',
-    width: '100%',
-    aspectRatio: '16 / 9',
-    overflow: 'hidden',
-    backgroundColor: '#0b0d12',
-    borderBottom: '1px solid rgba(255,255,255,0.06)',
-  }
+    position: "relative",
+    width: "100%",
+    aspectRatio: "16 / 9",
+    overflow: "hidden",
+    backgroundColor: "#0b0b0e",
+    borderBottom: "1px solid",
+    borderColor: "divider",
+  };
 
   if (portrait && image) {
     return (
-      <Box sx={container}>
+      <Box sx={container} className="shot">
         <Box
           aria-hidden
           sx={{
-            position: 'absolute',
+            position: "absolute",
             inset: 0,
             backgroundImage: `url(${image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'blur(28px) brightness(0.45) saturate(1.1)',
-            transform: 'scale(1.15)',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            filter: "blur(28px) brightness(0.4) saturate(1.1)",
+            transform: "scale(1.15)",
           }}
         />
         <Box
@@ -143,45 +79,36 @@ function Media({ image, video, alt, portrait }) {
           alt={alt}
           loading="lazy"
           sx={{
-            position: 'relative',
-            display: 'block',
-            height: '100%',
-            margin: '0 auto',
-            objectFit: 'contain',
+            position: "relative",
+            display: "block",
+            height: "100%",
+            margin: "0 auto",
+            objectFit: "contain",
           }}
         />
+        {/*         <Tint seed={seed} />*/}
       </Box>
-    )
+    );
   }
 
   const fill = {
-    display: 'block',
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  }
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  };
 
   if (video) {
     return (
-      <Box sx={container}>
-        <Box
-          component="video"
-          src={video}
-          poster={image}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label={alt}
-          sx={fill}
-        />
+      <Box sx={container} className="shot">
+        <Box component="video" src={video} poster={image} autoPlay loop muted playsInline preload="metadata" aria-label={alt} sx={fill} />
+        {/*         <Tint seed={seed} />*/}{" "}
       </Box>
-    )
+    );
   }
 
   return (
-    <Box sx={container}>
+    <Box sx={container} className="shot">
       <Box
         component="img"
         src={image}
@@ -189,123 +116,152 @@ function Media({ image, video, alt, portrait }) {
         loading="lazy"
         sx={fill}
         onError={(e) => {
-          e.currentTarget.style.visibility = 'hidden'
+          e.currentTarget.style.visibility = "hidden";
         }}
       />
+      {/*  <Tint seed={seed} /> */}
     </Box>
-  )
+  );
 }
 
-export default function ProjectCard({ project, onOpen }) {
-  const { t } = useTranslation()
-  const { id, variant, image, video, portrait, stack, liveUrl, sourceUrl, paperUrl } = project
-  const copy = t(`projects.items.${id}`, { returnObjects: true })
-  const labels = t('projects.labels', { returnObjects: true })
+export default function ProjectCard({ project, index, onOpen }) {
+  const { t } = useTranslation();
+  const { id, variant, image, video, portrait, stack, liveUrl, sourceUrl, paperUrl } = project;
+  const copy = t(`projects.items.${id}`, { returnObjects: true });
+  const labels = t("projects.labels", { returnObjects: true });
 
-  const isPrivate = variant === 'private'
-  const isSandbox = variant === 'sandbox'
-  const isPaper = variant === 'paper'
-  const hasActions = !isPrivate && !isSandbox && (liveUrl || sourceUrl || paperUrl)
+  const isPrivate = variant === "private";
+  const isSandbox = variant === "sandbox";
+  const isPaper = variant === "paper";
+  const hasActions = !isPrivate && !isSandbox && (liveUrl || sourceUrl || paperUrl);
+
+  const tag = isPrivate ? labels.private : isSandbox ? labels.technology : isPaper ? "paper" : labels.project;
 
   return (
-    <Card
+    <Box
+      className="card"
       sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        transition: 'transform 200ms, border-color 200ms',
-        '&:hover': {
-          transform: 'translateY(-2px)',
-          borderColor: 'rgba(124,154,255,0.35)',
-        },
+        backgroundColor: "background.paper",
+        border: "1px solid",
+        borderColor: "divider",
+        display: "flex",
+        flexDirection: "column",
+        transition: "background-color 300ms",
+        "&:hover": { backgroundColor: "#16161b" },
+        "&:hover .card-arrow": { color: "primary.main", transform: "translateX(3px)" },
       }}
     >
-      <CardActionArea
+      <Box
         onClick={onOpen}
-        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch', flexGrow: 1 }}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") onOpen();
+        }}
+        sx={{ display: "flex", flexDirection: "column", flexGrow: 1, cursor: "pointer" }}
       >
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{
+            px: 2,
+            py: 1.25,
+            borderBottom: "1px solid",
+            borderColor: "divider",
+          }}
+        >
+          <Typography component="span" className="mono" sx={{ color: "primary.main" }}>
+            {String(index).padStart(2, "0")}
+          </Typography>
+          <Typography component="span" className="mono" sx={{ color: "secondary.main" }}>
+            {tag}
+          </Typography>
+        </Stack>
+
         {isPrivate ? (
-          <PrivatePlaceholder label={labels.private} />
+          <IconPlaceholder Icon={LockOutlinedIcon} label={labels.private} />
         ) : isSandbox ? (
-          <SandboxPlaceholder label={labels.sandbox} />
+          <IconPlaceholder Icon={SportsEsportsOutlinedIcon} label={labels.technology} />
         ) : isPaper ? (
-          <PaperPlaceholder label={labels.paper} />
+          <IconPlaceholder Icon={ArticleOutlinedIcon} label="paper" />
         ) : (
-          <Media image={image} video={video} alt={copy.title} portrait={portrait} />
+          <Media image={image} video={video} alt={copy.title} portrait={portrait} seed={id} />
         )}
 
-        <CardContent sx={{ flexGrow: 1, pb: 1, width: '100%' }}>
-          <Stack
-            direction="row"
-            alignItems="baseline"
-            justifyContent="space-between"
-            sx={{ mb: 0.5, gap: 1 }}
-          >
-            <Typography variant="h5" component="h3" sx={{ fontWeight: 600 }}>
-              {copy.title}
-            </Typography>
-          </Stack>
+        <Box sx={{ p: 2.25, display: "flex", flexDirection: "column", gap: 1.25, flex: 1 }}>
           <Typography
-            variant="subtitle1"
-            sx={{
-              color: 'primary.light',
-              mb: 2,
-              fontStyle: 'italic',
-              fontWeight: 500,
-            }}
+            variant="h5"
+            component="h3"
+            sx={{ fontWeight: 800, fontSize: "1.15rem", textTransform: "none", letterSpacing: "-0.01em" }}
           >
+            {copy.title}
+          </Typography>
+          <Typography variant="subtitle1" sx={{ color: "primary.light", fontStyle: "italic", fontWeight: 500, fontSize: "0.92rem" }}>
             {copy.tagline}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.primary', mb: 2.5, lineHeight: 1.6 }}>
+          <Typography variant="body2" sx={{ color: "text.primary", lineHeight: 1.6, fontSize: "0.88rem" }}>
             {copy.description}
           </Typography>
           <StackChips items={stack} />
-        </CardContent>
-      </CardActionArea>
+          <Box sx={{ mt: "auto", pt: 1, display: "flex", justifyContent: "flex-end" }}>
+            <Typography
+              component="span"
+              className="card-arrow"
+              sx={{ color: "text.secondary", transition: "transform 140ms, color 140ms", fontSize: "1.1rem" }}
+            >
+              →
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
 
       {hasActions && (
-        <CardActions sx={{ px: 2, pb: 2, pt: 0, gap: 1 }}>
+        <Stack direction="row" spacing={0} sx={{ borderTop: "1px solid", borderColor: "divider" }}>
           {liveUrl && (
             <Button
-              variant="contained"
+              variant="text"
               size="small"
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              endIcon={<LaunchIcon />}
+              endIcon={<LaunchIcon fontSize="small" />}
               onClick={(e) => e.stopPropagation()}
+              sx={{ flex: 1, borderRadius: 0, color: "primary.main", py: 1, borderRight: "1px solid", borderColor: "divider" }}
             >
               {labels.demo}
             </Button>
           )}
           {sourceUrl && (
             <Button
-              variant="outlined"
+              variant="text"
               size="small"
               href={sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              startIcon={<GitHubIcon />}
+              startIcon={<GitHubIcon fontSize="small" />}
               onClick={(e) => e.stopPropagation()}
+              sx={{ flex: 1, borderRadius: 0, color: "text.secondary", py: 1 }}
             >
               {labels.source}
             </Button>
           )}
           {paperUrl && (
             <Button
-              variant="contained"
+              variant="text"
               size="small"
               href={paperUrl}
               target="_blank"
               rel="noopener noreferrer"
-              endIcon={<LaunchIcon />}
+              endIcon={<LaunchIcon fontSize="small" />}
               onClick={(e) => e.stopPropagation()}
+              sx={{ flex: 1, borderRadius: 0, color: "primary.main", py: 1 }}
             >
               {labels.paper}
             </Button>
           )}
-        </CardActions>
+        </Stack>
       )}
-    </Card>
-  )
+    </Box>
+  );
 }

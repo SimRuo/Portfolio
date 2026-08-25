@@ -37,11 +37,8 @@ export default function InfrastructureSection() {
       <Card
         sx={{
           overflow: 'hidden',
-          transition: 'transform 200ms, border-color 200ms',
-          '&:hover': {
-            borderColor: 'rgba(124,154,255,0.35)',
-            transform: 'translateY(-2px)',
-          },
+          transition: 'background-color 150ms',
+          '&:hover': { backgroundColor: '#16161b' },
           '&:hover .zoom-hint': { opacity: 1 },
         }}
       >
@@ -52,10 +49,11 @@ export default function InfrastructureSection() {
             cursor: 'zoom-in',
             px: { xs: 2, sm: 4, md: 6 },
             py: { xs: 3, sm: 4 },
-            backgroundColor: '#0b0d12',
-            borderBottom: '1px solid rgba(255,255,255,0.06)',
+            backgroundColor: '#0b0b0e',
+            borderBottom: '1px solid',
+            borderColor: 'divider',
             backgroundImage:
-              'radial-gradient(ellipse at top, rgba(124,154,255,0.08), transparent 60%)',
+              'radial-gradient(ellipse at top, rgba(255,77,23,0.08), transparent 60%)',
           }}
         >
           <Box
@@ -79,10 +77,9 @@ export default function InfrastructureSection() {
               right: 16,
               opacity: 0,
               transition: 'opacity 200ms',
-              backgroundColor: 'rgba(19,22,29,0.85)',
+              backgroundColor: 'rgba(15,15,18,0.9)',
               border: '1px solid',
               borderColor: 'divider',
-              borderRadius: 1,
               px: 1,
               py: 0.5,
               display: 'flex',
@@ -123,7 +120,7 @@ export default function InfrastructureSection() {
         fullWidth
         PaperProps={{
           sx: {
-            backgroundColor: 'rgba(11,13,18,0.95)',
+            backgroundColor: 'rgba(8,8,10,0.96)',
             backgroundImage: 'none',
             m: { xs: 1, sm: 2 },
             maxHeight: 'calc(100vh - 32px)',
@@ -138,9 +135,10 @@ export default function InfrastructureSection() {
             right: 8,
             top: 8,
             color: 'text.primary',
-            backgroundColor: 'rgba(11,13,18,0.6)',
+            backgroundColor: 'rgba(8,8,10,0.7)',
+            borderRadius: 0,
             zIndex: 1,
-            '&:hover': { backgroundColor: 'rgba(11,13,18,0.85)' },
+            '&:hover': { backgroundColor: 'rgba(8,8,10,0.9)' },
           }}
         >
           <CloseIcon />

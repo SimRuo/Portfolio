@@ -21,16 +21,24 @@ export default function LanguageSwitcher() {
       onChange={handleChange}
       aria-label={t('lang.switchTo')}
       sx={{
+        borderLeft: '1px solid',
+        borderColor: 'divider',
+        borderRadius: 0,
         '& .MuiToggleButton-root': {
-          px: 1.25,
-          py: 0.25,
-          fontWeight: 600,
+          borderRadius: 0,
+          border: 0,
+          px: 1.5,
+          py: 0.5,
+          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, "Cascadia Mono", monospace',
+          fontSize: '0.7rem',
+          letterSpacing: '0.08em',
+          fontWeight: 700,
           color: 'text.secondary',
-          borderColor: 'divider',
           '&.Mui-selected': {
             color: 'primary.main',
-            backgroundColor: 'rgba(124,154,255,0.08)',
+            backgroundColor: 'transparent',
           },
+          '&:hover': { color: 'text.primary', backgroundColor: 'transparent' },
         },
       }}
     >

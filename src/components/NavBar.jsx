@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 
@@ -31,39 +30,76 @@ export default function NavBar() {
       position="sticky"
       elevation={0}
       sx={{
-        backgroundColor: scrolled ? 'rgba(11,13,18,0.85)' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(8,8,10,0.92)' : 'background.default',
         backdropFilter: scrolled ? 'saturate(180%) blur(14px)' : 'none',
-        borderBottom: scrolled ? '1px solid' : '1px solid transparent',
-        borderColor: 'divider',
-        transition: 'background-color 200ms, border-color 200ms',
+        borderBottom: '2px solid',
+        borderColor: 'text.primary',
+        transition: 'background-color 200ms',
       }}
     >
       <div className="container-xl">
-        <Toolbar disableGutters sx={{ py: 1 }}>
+        <Toolbar disableGutters sx={{ minHeight: 56, gap: 0 }}>
           <Box
             component="a"
             href="#top"
             sx={{
-              fontWeight: 700,
-              fontSize: '1.05rem',
-              letterSpacing: '-0.01em',
-              color: 'text.primary',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              pr: '22px',
+              borderRight: '1px solid',
+              borderColor: 'divider',
               textDecoration: 'none',
             }}
           >
-            simruo<Box component="span" sx={{ color: 'primary.main' }}>.dev</Box>
+            <Box
+              component="span"
+              sx={{
+                fontWeight: 900,
+                fontSize: '1.35rem',
+                letterSpacing: '0.02em',
+                color: 'primary.main',
+                lineHeight: 1,
+              }}
+            >
+              SR
+            </Box>
+            <Box
+              component="span"
+              className="mono"
+              sx={{ fontWeight: 800, fontSize: '0.72rem', color: 'text.primary' }}
+            >
+              simruo.dev
+            </Box>
           </Box>
+
           <Box sx={{ flex: 1 }} />
-          <Stack direction="row" spacing={0.5} sx={{ display: { xs: 'none', sm: 'flex' }, mr: 2 }}>
+
+          <Stack
+            direction="row"
+            spacing={0}
+            sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'stretch', mr: 1 }}
+          >
             {links.map((link) => (
-              <Button
+              <Box
                 key={link.href}
+                component="a"
                 href={link.href}
-                color="inherit"
-                sx={{ color: 'text.secondary', '&:hover': { color: 'text.primary' } }}
+                className="mono"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  px: '18px',
+                  color: 'text.secondary',
+                  borderLeft: '1px solid',
+                  borderColor: 'divider',
+                  textDecoration: 'none',
+                  transition: 'color 120ms, background-color 120ms',
+                  '&:hover': { color: 'primary.main' },
+                }}
               >
                 {link.label}
-              </Button>
+              </Box>
             ))}
           </Stack>
           <LanguageSwitcher />
